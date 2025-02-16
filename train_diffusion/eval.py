@@ -8,6 +8,8 @@ from pytorch_msssim import ms_ssim
 from scipy.linalg import sqrtm
 from torchvision.models import inception_v3, Inception_V3_Weights
 import matplotlib.pyplot as plt
+import yaml
+import argparse
 
 # Use GPU if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -150,9 +152,23 @@ def save_example_images(gt_path, pred_path, subject_id, modality, num_examples=1
 # Main Evaluation Function (with flipping and saving examples)
 #########################################
 def evaluate():
-    modalities = ['t1n', 't1c', 't2w', 't2f']
-    gt_root = "val_gt"
-    pred_root = "val_pred"
+    parser = argparse.ArgumentParser(description="Evaluate synthetic images against ground truth.")
+    parser.add_argument("--config", type=str, required=True, help="Path to the YAML configuration file.")
+    args_cli = parser.parse_args()
+
+    # Load YAML configuration.
+    with open(args_cli.config, "r") as f:
+        config = yaml.safe_load(f)
+
+    # Build parameters from YAML sections.
+    dataset_config  = config.get("dataset", {})
+    aug_config      = config.get("augmentation", {})
+
+    base_dir = "../../data"
+    gt_root = os.path.join(base_dir, dataset_config.get("output_root"), "val_seg")
+    pred_root = aug_config.get("output_masks_dir", "val_pred")
+
+    modalities = dataset_config.get("modalities", ["t1n", "t1c", "t2w", "t2f"])
     results = {}
 
     for mod in modalities:

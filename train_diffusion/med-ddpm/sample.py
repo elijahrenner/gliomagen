@@ -167,7 +167,7 @@ def main():
 
     # Build input and export folders.
     # For sampling, we use the validation segmentation folder from dataset.
-    args.inputfolder = os.path.join(base_dir, dataset_config.get("output_root", "BraTS2024-GLI/3_gli_head_mask_normalized_multimodal"), "val_seg")
+    args.inputfolder = os.path.join(base_dir, dataset_config.get("output_root"), "val_seg")
     args.exportfolder = aug_config.get("output_masks_dir", "val_pred")
 
     # Modalities from dataset.

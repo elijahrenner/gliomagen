@@ -7,8 +7,8 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 import torchvision.transforms as transforms
 import torch.nn.functional as F
-from diffusion_model.unet_brats import create_model
-from diffusion_model.trainer_brats import GaussianDiffusion, Trainer
+from diffusion_model.unet import create_model
+from diffusion_model.trainer import GaussianDiffusion, Trainer
 from nibabel import as_closest_canonical  # For reorienting images
 import matplotlib.pyplot as plt
 import yaml

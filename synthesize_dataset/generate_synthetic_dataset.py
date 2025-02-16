@@ -6,8 +6,8 @@ import nibabel as nib
 import torch
 from torchvision.transforms import Compose, Lambda
 from nibabel import as_closest_canonical  # for orientating scans
-from diffusion_model.trainer_brats import GaussianDiffusion, num_to_groups
-from diffusion_model.unet_brats import create_model
+from synthesize_dataset.diffusion_model.trainer import GaussianDiffusion, num_to_groups
+from synthesize_dataset.diffusion_model.unet import create_model
 import matplotlib.pyplot as plt
 import imageio
 from tqdm import tqdm  # for progress bars
