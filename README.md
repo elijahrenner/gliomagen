@@ -25,7 +25,7 @@ Depending on your configuration (volume dimensions, channels, etc.), memory requ
 
 ## All Things Data
 
-Based on Med-DDPM, GliomaGen has applications to several imaging domains, particularly those in the BraTS challenge. To use BraTS 2024 Adult Post-Treatment Glioma as described in the paper, follow these instructions, which are easily adaptable to other domains:
+Based on [Med-DDPM](https://github.com/mobaidoctor/med-ddpm), GliomaGen has applications to several imaging domains, particularly those in the BraTS challenge. To use BraTS 2024 Adult Post-Treatment Glioma as described in the paper, follow these instructions, which are easily adaptable to other domains:
 
 ### BraTS 2024 Adult Post-Treatment Glioma Usage
 
