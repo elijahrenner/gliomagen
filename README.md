@@ -1,10 +1,8 @@
 # GliomaGen
-
-Elijah Renner
  
 ![image](figures/diffusion%20processes%20with%20mask.png)
 
-[Paper Link](#) | [Weights](#) | [Dataset](#)
+[📝 Paper](figures/GliomaGen.pdf) | [🤗 Weights](https://huggingface.co/elijahrenner/gliomagen) | [🤗 BraTS 2024 Adult Post Treatment Glioma-Synthetic](https://huggingface.co/datasets/elijahrenner/brats2024-aptg-synthetic)
 
 ## Abstract
 
@@ -18,11 +16,8 @@ To seamlessly train and synthesize data with GliomaGen, please update the `confi
 
 ### Packages
 
-Install all packages with 
-
-```
-pip install -r requirements.txt
-```
+Install all packages with ```
+pip install -r requirements.txt```
 
 ### Hardware
 
@@ -48,7 +43,6 @@ Next, to prepare the data for GliomaGen, follow the instructions in `data/prepar
 ## Training
 
 As mentioned before, it's crucial `config.yaml` contains the desired hyperparameters (e.g., iterations, LR schedule, timesteps, etc.) and dataset directories tailored to your dataset. Then, train the model by running
-
 ```
 cd train_diffusion/med-ddpm
 python train.py
@@ -161,3 +155,6 @@ Then, you can use `validate_dataset/evaluate_nnunet.ipynb` to produce several qu
 	year = {2025},
 }
 ```
+
+
+
