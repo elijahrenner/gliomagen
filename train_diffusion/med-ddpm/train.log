@@ -1,0 +1,15 @@
+2025-02-14 00:19:08,734 INFO: After filtering, total valid samples: 1300
+2025-02-14 00:19:08,735 INFO: After filtering, total valid samples: 50
+2025-02-14 00:19:08,735 INFO: Total training samples: 1300
+2025-02-14 00:19:08,735 INFO: Total validation samples: 50
+2025-02-14 00:19:09,852 INFO: Model created successfully.
+2025-02-14 00:20:16,891 INFO: After filtering, total valid samples: 1300
+2025-02-14 00:20:16,892 INFO: After filtering, total valid samples: 50
+2025-02-14 00:20:16,893 INFO: Total training samples: 1300
+2025-02-14 00:20:16,893 INFO: Total validation samples: 50
+2025-02-14 00:20:17,663 INFO: Model created successfully.
+2025-02-14 00:21:40,975 INFO: After filtering, total valid samples: 1300
+2025-02-14 00:21:40,976 INFO: After filtering, total valid samples: 50
+2025-02-14 00:21:40,977 INFO: Total training samples: 1300
+2025-02-14 00:21:40,977 INFO: Total validation samples: 50
+2025-02-14 00:21:41,748 INFO: Model created successfully.
