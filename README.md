@@ -1,8 +1,8 @@
 # GliomaGen
  
-![image](figures/diffusion%20processes%20with%20mask.png)
+![image](media/diffusion%20processes%20with%20mask.png)
 
-[📝 Paper](figures/GliomaGen.pdf) | [🤗 Weights](https://huggingface.co/elijahrenner/gliomagen) | [🤗 BraTS 2024 Adult Post Treatment Glioma-Synthetic](https://huggingface.co/datasets/elijahrenner/brats2024-aptg-synthetic)
+[📝 Paper](media/GliomaGen.pdf) | [🖼️ Poster](media/poster.pdf) | [🤗 Weights](https://huggingface.co/elijahrenner/gliomagen) | [🤗 BraTS 2024 Adult Post Treatment Glioma-Synthetic](https://huggingface.co/datasets/elijahrenner/brats2024-aptg-synthetic)
 
 ## Abstract
 
@@ -140,7 +140,7 @@ Then, you can use `validate_dataset/evaluate_nnunet.ipynb` to produce several qu
 ## To Do
 
 - [X] Release code
-- [ ] Release weights
+- [X] Release weights
 - [ ] Release dataset
 - [ ] Put paper on arXiv
 - [ ] Train on other datasets
