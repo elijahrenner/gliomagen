@@ -6,7 +6,7 @@
 
 ## Abstract
 
-The scarcity of labeled post-treatment glioma MR images limits effective automatic segmentation of key features in brain MR images. Addressing this issue, GliomaGen is introduced, an anatomically informed generative diffusion model that uses a modified Med-DDPM structure to create high-quality MR images from anatomical masks. GliomaGen takes four modalities and six segmentation labels, including a new head area, as input. The developed GliomaGen pipeline augments existing masks to expand the BraTS 2024 Post-Treatment Glioma dataset by 2124 masks, which are later used to synthesize the largest BraTS 2024 Adult Post-Treatment Glioma derivative synthetic dataset $(N=2124)$. Evaluations of GliomaGen with quantitative metrics MS-SSIM, FID, and KID show high fidelity, particularly for t1c (FID: 55.2028 ± 3.7446) and t2w (FID: 54.9974 ± 3.2271) modalities. Segmentation tests with nnU-Net show hybrid training matches real-data performance, but inconsistencies and noise in generated volumes prevented state-of-the-art segmentation from being achieved. These findings show the potential of conditional diffusion models to address data constraints in the BraTS 2024 Adult Post-Treatment Glioma context, and also prompt further iteration on the GliomaGen pipeline.
+The scarcity of labeled post-treatment glioma MR images limits effective automatic segmentation of key features in brain MR images. Addressing this issue, GliomaGen is introduced, an anatomically informed generative diffusion model that uses a modified Med-DDPM structure to create high-quality MR images from anatomical masks. GliomaGen takes four modalities and six segmentation labels, including a new head area, as input. The developed GliomaGen pipeline augments existing masks to expand the BraTS 2024 Post-Treatment Glioma dataset by 2124 masks, which are later used to synthesize the largest BraTS 2024 Adult Post-Treatment Glioma derivative synthetic dataset (N=2124). Evaluations of GliomaGen with quantitative metrics MS-SSIM, FID, and KID show high fidelity, particularly for t1c (FID: 55.2028 ± 3.7446) and t2w (FID: 54.9974 ± 3.2271) modalities, despite noise appearing periodically across samples. Tests reveal that, when trained on half of the real data and a high-quality subset (598) of synthetic samples, nnU-Net achieves comparable performance (dice coefficient=0.8042) to an identical nnU-Net trained on the entire real BraTS dataset (dice coefficient=0.8167). These findings show the potential of conditional diffusion models to address data constraints in the BraTS 2024 Adult Post-Treatment Glioma context, and also prompt further iteration on the GliomaGen pipeline. Collaborating with radiologists, GliomaGen is currently being adapted to an epilepsy dataset, further broadening its clinical impact.
 
 ## Setup
 
@@ -141,7 +141,7 @@ Then, you can use `validate_dataset/evaluate_nnunet.ipynb` to produce several qu
 
 - [X] Release code
 - [X] Release weights
-- [ ] Release dataset
+- [X] Release dataset
 - [ ] Put paper on arXiv
 - [ ] Train on other datasets
 
@@ -155,6 +155,3 @@ Then, you can use `validate_dataset/evaluate_nnunet.ipynb` to produce several qu
 	year = {2025},
 }
 ```
-
-
-
