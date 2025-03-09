@@ -16,8 +16,7 @@ To seamlessly train and synthesize data with GliomaGen, please update the `confi
 
 ### Packages
 
-Install all packages with ```
-pip install -r requirements.txt```
+Install all packages with ```pip install -r requirements.txt```
 
 ### Hardware
 
