@@ -1,0 +1,3 @@
+defaults:
+  - dataset: fcd2
+  - model: ddpm
