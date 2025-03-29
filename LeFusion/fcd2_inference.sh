@@ -1,7 +1,7 @@
 data_type=fcd2
 types=1
-diffusion_img_size=64
-diffusion_depth_siz=48
+diffusion_img_size=128
+diffusion_depth_siz=80
 diffusion_num_channels=1
 batch_size=3
 test_txt_dir=""
