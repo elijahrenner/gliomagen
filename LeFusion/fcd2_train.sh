@@ -1,13 +1,13 @@
 dataset=fcd2
-diffusion_img_size=128
-diffusion_depth_size=80
+diffusion_img_size=96
+diffusion_depth_size=96
 diffusion_num_channels=1
 batch_size=2
-test_txt_dir=data/FCD2/Pathological/test.txt
-dataset_root_dir=data/FCD2
+test_txt_dir=data/FCD2_PATCH/Pathological/test.txt
+dataset_root_dir=data/FCD2_PATCH
 train_num_steps=50001
 cond_dim=16
-results_folder=LeFusion/LeFusion_Model/FCD2
+results_folder=LeFusion/LeFusion_Model/FCD2_PATCH
 
 python LeFusion/train/train.py \
     dataset=$dataset \

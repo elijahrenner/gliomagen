@@ -11,13 +11,11 @@ import matplotlib.pyplot as plt
 PREPROCESSING_TRANSFORMS = tio.Compose([
     tio.Clamp(out_min=0, out_max=600),
     tio.RescaleIntensity(in_min_max=(0, 600), out_min_max=(-1.0, 1.0)),
-    tio.Resample((2.0,2.0,2.0)),
-    tio.CropOrPad(target_shape=(80, 128, 128))
+    tio.CropOrPad(target_shape=(96, 96, 96))
 ])
 
 PREPROCESSING_MASK_TRANSFORMS = tio.Compose([
-    tio.Resample((2.0,2.0,2.0)),
-    tio.CropOrPad(target_shape=(80, 128, 128))
+    tio.CropOrPad(target_shape=(96, 96, 96))
 ])
 
 TRAIN_TRANSFORMS = tio.Compose([
