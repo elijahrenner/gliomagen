@@ -1,6 +1,6 @@
 dataset=fcd2
-diffusion_img_size=96
-diffusion_depth_size=96
+diffusion_img_size=48
+diffusion_depth_size=48
 diffusion_num_channels=1
 batch_size=2
 test_txt_dir=data/FCD2_PATCH/Pathological/test.txt
