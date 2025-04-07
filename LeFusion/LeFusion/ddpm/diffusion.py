@@ -1,5 +1,7 @@
 import math
 import copy
+import os
+import torchio as tio
 import torch
 from torch import nn, einsum
 import torch.nn.functional as F
@@ -761,7 +763,7 @@ class GaussianDiffusion_Nolatent(nn.Module):
                                                       *((1,) * (len(x.shape) - 1)))
         return model_mean + nonzero_mask * (0.5 * model_log_variance).exp() * noise 
 
-
+    @torch.inference_mode()
     def p_sample_loop_repaint_progressive(
         self,
         shape,
@@ -797,6 +799,26 @@ class GaussianDiffusion_Nolatent(nn.Module):
                                                     conf=conf,
                                                     cond=cond                 )
                         image_after_step = out
+
+                        if conf.get("save_checkpoints", False):
+                            checkpoints_dir = conf.get("checkpoints_dir", "checkpoints")
+                            step_folder = os.path.join(checkpoints_dir, f"t_{t_last_t}")
+                            os.makedirs(step_folder, exist_ok=True)
+                
+                            # Save each volume in the current batch
+                            if "affine" in model_kwargs:
+                                affines = model_kwargs["affine"]
+                            else:
+                                # if none provided, just default to identity
+                                affines = [torch.eye(4, device=device)] * out.shape[0]
+                
+                            for i in range(out.shape[0]):
+                                volume_i = out[i].detach().cpu()
+                                affine_i = affines[i].squeeze(0).cpu() if hasattr(affines[i], "cpu") else torch.eye(4)
+                                tio_img = tio.ScalarImage(tensor=volume_i, channels_last=False, affine=affine_i)
+                                filename = f"checkpoint_batch{i}.nii.gz"
+                                tio_img.save(os.path.join(step_folder, filename))
+                
                         sample_idxs[t_cur] += 1
                         yield out
                 else:

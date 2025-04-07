@@ -83,3 +83,6 @@ schedule_jump_params:
   jump_length: 10 
   jump_n_sample: 10
 
+save_checkpoints: false
+checkpoints_dir: data/checkpoints
+

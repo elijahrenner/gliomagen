@@ -7,15 +7,15 @@ import cv2
 import torchio as tio
 import matplotlib.pyplot as plt
 
-# Preprocessing transforms: Clamp, rescale intensity then crop/pad to (48, 64, 64)
+# Preprocessing transforms: Clamp, rescale intensity then crop/pad to (48, 48, 48)
 PREPROCESSING_TRANSFORMS = tio.Compose([
     tio.Clamp(out_min=0, out_max=600),
     tio.RescaleIntensity(in_min_max=(0, 600), out_min_max=(-1.0, 1.0)),
-    tio.CropOrPad(target_shape=(96, 96, 96))
+    tio.CropOrPad(target_shape=(48, 48, 48))
 ])
 
 PREPROCESSING_MASK_TRANSFORMS = tio.Compose([
-    tio.CropOrPad(target_shape=(96, 96, 96))
+    tio.CropOrPad(target_shape=(48, 48, 48))
 ])
 
 TRAIN_TRANSFORMS = tio.Compose([

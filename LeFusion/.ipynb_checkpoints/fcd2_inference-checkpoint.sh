@@ -1,17 +1,19 @@
 data_type=fcd2
 types=1
-diffusion_img_size=64
+diffusion_img_size=48
 diffusion_depth_siz=48
 diffusion_num_channels=1
 batch_size=3
 test_txt_dir=""
-dataset_root_dir=data/FCD2/gen/Image/
-target_img_path=data/FCD2/gen/Image/
-target_label_path=data/FCD2/gen/Mask/
-model_path=LeFusion/LeFusion_Model/FCD2/model-2.pt
+dataset_root_dir=data/FCD2_PATCH/gen/
+target_img_path=data/FCD2_PATCH/gen/Image/
+target_label_path=data/FCD2_PATCH/gen/Mask/
+model_path=LeFusion/LeFusion_Model/FCD2_PATCH/model-12.pt
 jump_length=5
 jump_n_sample=5
 cond_dim=16
+save_checkpoints=false
+checkpoints_dir="data/FCD2_PATCH/gen/checkpoints/"
 
 python LeFusion/inference/inference.py \
     data_type=$data_type \
@@ -27,4 +29,6 @@ python LeFusion/inference/inference.py \
     schedule_jump_params.jump_length=$jump_length \
     schedule_jump_params.jump_n_sample=$jump_n_sample \
     cond_dim=$cond_dim \
-    model_path=$model_path 
+    model_path=$model_path \
+    save_checkpoints=$save_checkpoints \
+    checkpoints_dir=$checkpoints_dir 

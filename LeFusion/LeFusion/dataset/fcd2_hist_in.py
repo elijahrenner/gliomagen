@@ -4,15 +4,15 @@ import torch
 from torch.utils.data.dataset import Dataset
 import torchio as tio
 
-# Preprocessing transforms for images and masks with target shape (80, 128, 128)
+# Preprocessing transforms for images and masks with target shape (48, 48, 48)
 PREPROCESSING_TRANSFORMS = tio.Compose([
     tio.Clamp(out_min=0, out_max=600),
     tio.RescaleIntensity(in_min_max=(0, 600), out_min_max=(-1.0, 1.0)),
-    tio.CropOrPad(target_shape=(96, 96, 96))
+    tio.CropOrPad(target_shape=(48, 48, 48))
 ])
 
 PREPROCESSING_MASK_TRANSFORMS = tio.Compose([
-    tio.CropOrPad(target_shape=(96, 96, 96))
+    tio.CropOrPad(target_shape=(48, 48, 48))
 ])
 
 class FCD2InDataset(Dataset):

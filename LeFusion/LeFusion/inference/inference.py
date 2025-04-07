@@ -173,17 +173,28 @@ def main(conf: DictConfig):
                 os.makedirs(os.path.join(conf.target_label_path, label_fold), exist_ok=True)
                 for i in range(batch_size):
                     result = output[i, :, :, :, :].cpu()
-                    restore_affine = batch['affine'][i] if not hasattr(batch['affine'][i], 'cpu') else batch['affine'][i].cpu()
+                    restore_affine = batch['affine'][i].cpu() if hasattr(batch['affine'][i], 'cpu') else batch['affine'][i]
                     gt_name = batch['GT_name'][i]
-                    name_part, extension = gt_name.rsplit('.nii.gz', 1)[0], '.nii.gz'
-                    main_name, vol_part = name_part.rsplit('_', 1)
-                    mask_name = f"{main_name}_Mask_{vol_part}{extension}"
-                    mask_name = gt_name.replace('.nii.gz', '_roi.nii.gz')
+            
+                    # Print name of the input volume
+                    print("Using input volume:", gt_name)  
+            
+                    # Construct final output paths
+                    image_out_path = os.path.join(conf.target_img_path, image_fold, gt_name)
+                    mask_out_name  = gt_name.replace('.nii.gz', '_roi.nii.gz')
+                    mask_out_path  = os.path.join(conf.target_label_path, label_fold, mask_out_name)
+                    
+                    # Print output paths
+                    print("Saving image to:", image_out_path)
+                    print("Saving mask to:", mask_out_path)
+            
+                    # Write output volumes
                     gen_image = tio.ScalarImage(tensor=result, channels_last=False, affine=restore_affine)
-                    gen_image.save(os.path.join(conf.target_img_path, image_fold, gt_name))
+                    gen_image.save(image_out_path)
+            
                     label = batch['gt_keep_mask'][i].cpu()
-                    label = tio.LabelMap(tensor=label, channels_last=False, affine=restore_affine)
-                    label.save(os.path.join(conf.target_label_path, label_fold, mask_name))
+                    label_map = tio.LabelMap(tensor=label, channels_last=False, affine=restore_affine)
+                    label_map.save(mask_out_path)
 
 
         idx += 1
