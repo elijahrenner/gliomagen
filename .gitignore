@@ -1,4 +1,3 @@
-LeFusion/data
-LeFusion/outputs
-LeFusion/wandb
-LeFusion/LeFusion/LeFusion_Model/FCD2
+DDPM_Pseudo3D/FCD2
+DDPM_Pseudo3D/scripts/log
+DDPM_Pseudo3D/scripts/04_19_2025_sampling
